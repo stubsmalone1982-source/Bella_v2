@@ -154,8 +154,8 @@ body {
   left:50%;
   top:100%;
   transform: translateX(-50%) translateY(-1px); /* more behind */
-  width: 90%;
-  height: 6px;
+  width: 190%;
+  height: 12px;
   background: radial-gradient(ellipse at center,
     rgb(255, 255, 255) 0%,
     rgba(235, 200, 255, 0.9) 18%,
@@ -194,5 +194,6 @@ body {
     rgba(0,0,0,.96) 100%
   );
 }
+
 
 
