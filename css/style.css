@@ -169,7 +169,113 @@ body {
 } 
 
 /* PAGE 2 SAFETY (keeps NEXT reachable) */
-#p2.scene.active{
+/* =========================
+   PAGE 2 ONLY (DO NOT TOUCH P1)
+   ========================= */
+
+/* Safety: ensure Page 2 uses same “scene active” layout rules already in style.css */
+/* We only style #p2 visuals here. */
+
+#p2{
+  position: relative;
+  isolation: isolate;
+
+  /* Same world as p1, but dimmer / more intimate */
+  background:
+    radial-gradient(circle at 50% 70%,
+      rgba(80, 40, 160, 0.18) 0%,
+      rgba(40, 14, 90, 0.14) 30%,
+      rgba(5, 5, 9, 1) 72%
+    ),
+    #050509;
+}
+
+/* Wallpaper continues, slightly stronger than p1 */
+#p2::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background: url("../assets/damask.png");
+  background-size: 500px;
+  background-repeat: repeat;
+
+  /* No negative blur. Keep valid. */
+  filter: blur(1px);
+
+  opacity: 0.14;
+}
+
+/* Stronger vignette for intimacy */
+#p2::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background: radial-gradient(circle at center,
+    rgba(0,0,0,0) 38%,
+    rgba(0,0,0,.96) 100%
+  );
+}
+
+/* Smirk only on Page 2 */
+#p2 img{
+  position: relative;
+  z-index: 1;
+
+  width: min(70vw, 340px);
+  height: min(70vw, 340px);
+  object-fit: cover;
+  border-radius: 999px;
+  display: block;
+
+  /* Subtle presence glow */
+  box-shadow:
+    0 0 16px rgba(255,255,255,.12),
+    0 0 36px rgba(180, 80, 255, .22);
+}
+
+/* Headline stays “same world” but slightly calmer glow */
+#p2 h1{
+  position: relative;
+  z-index: 1;
+
+  /* Don’t fight your base font stack; match p1’s vibe */
+  font-family: "Anabella", cursive;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 3.6vw, 2.9rem);
+  color:#efe9ff;
+
+  text-shadow:
+    0 0 6px rgba(255,255,255,.16),
+    0 0 16px rgba(180, 85, 255, .42),
+    0 0 30px rgba(120, 50, 200, .22);
+}
+
+/* Buttons on Page 2: same system, slightly moodier base, subtle hover glow */
+#p2 button{
+  position: relative;
+  z-index: 1;
+
+  background: rgba(10,10,16,.94);
+  border: 1px solid rgba(180,140,255,.35);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.05),
+    0 14px 50px rgba(0,0,0,.72);
+
+  color:#f6f1ff;
+}
+
+#p2 button:hover{
+  /* No motion. Just intensity */
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.06),
+    0 18px 60px rgba(0,0,0,.78),
+    0 0 22px rgba(180, 80, 255, .22);
+} all right #p2.scene.active{
   display:grid;
   place-items:center;
   gap: 18px;
@@ -192,4 +298,5 @@ body {
   border: 2px solid rgba(101, 28, 125, 0.819);
   background: rgba(10,10,16,.92);
   color: #f6f1ff;
+
 } 
