@@ -168,28 +168,41 @@ body {
   pointer-events:none;
 } 
 
-/* PAGE 2 SAFETY (keeps NEXT reachable) */
-#p2.scene.active{
-  display:grid;
-  place-items:center;
-  gap: 18px;
-  padding: 28px 18px;
+/* PAGE 2 — Darker / Intimate Cue */
+#p2{
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 70%,
+      rgba(70, 30, 140, 0.25) 0%,
+      rgba(40, 12, 90, 0.18) 28%,
+      rgba(5, 5, 9, 1) 70%
+    ),
+    #050509;
 }
 
-#p2 img{
-  width: min(70vw, 340px);
-  height: min(70vw, 340px);
-  object-fit: cover;
-  border-radius: 999px;
-  display:block;
+/* Damask continues — slightly more visible */
+#p2::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background: url("../assets/damask.png");
+  background-size: 500px;
+  background-repeat: repeat;
+  filter: blur(1px);
+  opacity: 0.14; /* slightly stronger than p1 */
 }
 
-#p1.scene.active button{
-  padding: 5px 64px;
-  font-size: 1.2rem;
-  letter-spacing: .5px;
-  border-radius: 12px;
-  border: 2px solid rgba(101, 28, 125, 0.819);
-  background: rgba(10,10,16,.92);
-  color: #f6f1ff;
-} 
+/* Stronger vignette (more intimate) */
+#p2::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(circle at center,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,.96) 100%
+  );
+}
