@@ -1,5 +1,5 @@
 /* RESET */
-* { box-sizing: border-box; }
+{ box-sizing: border-box; }
 @font-face {
   font-family: "MoonDance";
   src: url("../fonts/moondance.ttf") format("truetype");
@@ -77,8 +77,7 @@ body {
       rgba(115, 60, 210, 0.389) 0%,
       rgba(74, 25, 160, 0.177) 28%,
       rgba(5, 5, 9, 1) 68%
-    ),
-    #050509;
+    )
 }
 
 /* Victorian wallpaper (dominant, but classy) */
@@ -104,7 +103,7 @@ body {
   background: radial-gradient(circle at center,
     rgba(0,0,0,0) 50%,
     rgba(0,0,0,.92) 100%
-  );
+  )
 }
 
 /* Headline */
@@ -132,7 +131,8 @@ body {
     to bottom,
     rgba(28,12,55,.90),
     rgba(10,6,22,.95)
-  );
+  )
+    
   border-radius: 6px;                  /* less pill */
   border: 1px solid rgba(180,140,255,.45);
   box-shadow:
@@ -164,7 +164,8 @@ body {
     rgba(194, 95, 255, 0.9) 40%,
     rgba(143, 35, 190, 0.35) 58%,
     rgba(143, 35, 190, 0) 68%
-  );
+  )
+    
   filter: blur(1px);
   opacity: 1;
   pointer-events:none;
@@ -186,139 +187,4 @@ transform: translateY(-3px);
   transform: translateX(-50%) translateY(1px);
   
 }
-
-/* PAGE 2 SAFETY (keeps NEXT reachable) */
-/* =========================
-   PAGE 2 ONLY (DO NOT TOUCH P1)
-   ========================= */
-
-/* Safety: ensure Page 2 uses same “scene active” layout rules already in style.css */
-/* We only style #p2 visuals here. */
-
-#p2{
-  position: relative;
-  isolation: isolate;
-
-  /* Same world as p1, but dimmer / more intimate */
-  background:
-    radial-gradient(circle at 50% 70%,
-      rgba(80, 40, 160, 0.18) 0%,
-      rgba(40, 14, 90, 0.14) 30%,
-      rgba(5, 5, 9, 1) 72%
-    ),
-    #050509;
-}
-
-/* Wallpaper continues, slightly stronger than p1 */
-#p2::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  background: url("../assets/damask.png");
-  background-size: 500px;
-  background-repeat: repeat;
-
-  /* No negative blur. Keep valid. */
-  filter: blur(1px);
-
-  opacity: 0.14;
-}
-
-/* Stronger vignette for intimacy */
-#p2::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  background: radial-gradient(circle at center,
-    rgba(0,0,0,0) 38%,
-    rgba(0,0,0,.96) 100%
-  );
-}
-
-/* Smirk only on Page 2 */
-#p2 img{
-  position: relative;
-  z-index: 1;
-
-  width: min(70vw, 340px);
-  height: min(70vw, 340px);
-  object-fit: cover;
-  border-radius: 999px;
-  display: block;
-
-  /* Subtle presence glow */
-  box-shadow:
-    0 0 16px rgba(255,255,255,.12),
-    0 0 36px rgba(180, 80, 255, .22);
-}
-
-/* Headline stays “same world” but slightly calmer glow */
-#p2 h1{
-  position: relative;
-  z-index: 1;
-
-  /* Don’t fight your base font stack; match p1’s vibe */
-  font-family: "Anabella", cursive;
-  font-weight: 400;
-  font-size: clamp(2.2rem, 3.6vw, 2.9rem);
-  color:#efe9ff;
-
-  text-shadow:
-    0 0 6px rgba(255,255,255,.16),
-    0 0 16px rgba(180, 85, 255, .42),
-    0 0 30px rgba(120, 50, 200, .22);
-}
-
-/* Buttons on Page 2: same system, slightly moodier base, subtle hover glow */
-#p2 button{
-  position: relative;
-  z-index: 1;
-
-  background: rgba(10,10,16,.94);
-  border: 1px solid rgba(180,140,255,.35);
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.05),
-    0 14px 50px rgba(0,0,0,.72);
-
-  color:#f6f1ff;
-}
-
-#p2 button:hover{
-  /* No motion. Just intensity */
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.06),
-    0 18px 60px rgba(0,0,0,.78),
-    0 0 22px rgba(180, 80, 255, .22);
-} all right #p2.scene.active{
-  display:grid;
-  place-items:center;
-  gap: 18px;
-  padding: 28px 18px;
-}
-
-#p2 img{
-  width: min(70vw, 340px);
-  height: min(70vw, 340px);
-  object-fit: cover;
-  border-radius: 999px;
-  display:block;
-}
-
-#p1.scene.active button{
-  padding: 5px 64px;
-  font-size: 1.2rem;
-  letter-spacing: .5px;
-  border-radius: 12px;
-  border: 2px solid rgba(101, 28, 125, 0.819);
-  background: rgba(10,10,16,.92);
-  color: #f6f1ff;
-
-} 
-
-
 
