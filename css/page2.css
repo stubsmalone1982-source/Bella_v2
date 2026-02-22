@@ -47,7 +47,7 @@
   background: radial-gradient(circle at center,
     rgba(0,0,0,0) 38%,
     rgba(0,0,0,.96) 100%
-  );
+  )
 }
 
 /* Smirk only on Page 2 */
@@ -105,7 +105,9 @@
     inset 0 0 0 1px rgba(255,255,255,.06),
     0 18px 60px rgba(0,0,0,.78),
     0 0 22px rgba(180, 80, 255, .22);
-} all right #p2.scene.active{
+} 
+
+#p2.scene.active{
   display:grid;
   place-items:center;
   gap: 18px;
@@ -119,15 +121,4 @@
   border-radius: 999px;
   display:block;
 }
-
-#p1.scene.active button{
-  padding: 5px 64px;
-  font-size: 1.2rem;
-  letter-spacing: .5px;
-  border-radius: 12px;
-  border: 2px solid rgba(101, 28, 125, 0.819);
-  background: rgba(10,10,16,.92);
-  color: #f6f1ff;
-
-} 
 
